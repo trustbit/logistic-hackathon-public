@@ -22,5 +22,11 @@
       "is_fleet": false,
       "github_repository": "danielweller-swp/hackathon-dry-run",
       "github_private_ssh_key_secret": "TEAM_DANIEL"
+    },
+    {
+      "unique_id": "team-vadim",
+      "is_fleet": false,
+      "github_repository": "vsavenkov/hackthon-agent-dryrun2-vadim",
+      "github_private_ssh_key_secret": "TEAM_VADIM"
     }
 ]
