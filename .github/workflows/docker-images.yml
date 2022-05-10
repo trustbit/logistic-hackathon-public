@@ -1,0 +1,59 @@
+name: Build Docker Images
+
+on: 
+  - workflow_dispatch
+  - push
+  # schedule:
+  #   # https://crontab.guru/every-5-minutes
+  #   - cron:  '*/5 * * * *'
+
+jobs:
+  loadAgentsJson:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - id: checkout
+      uses: actions/checkout@v3
+    - id: set-matrix
+      run: |
+        JSON=`jq -r tostring agents.json`
+        echo $JSON
+        echo "::set-output name=matrix::$JSON"
+
+  build:
+    needs: loadAgentsJson
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        agent: ${{fromJson(needs.loadAgentsJson.outputs.matrix)}}
+    steps:
+      - name: Checkout Github repository (Public)
+        if: matrix.agent.github_repository != 0 && matrix.agent.github_repository != NaN && (matrix.agent.github_private_ssh_key_secret == 0 || matrix.agent.github_private_ssh_key_secret == NaN)
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ matrix.agent.github_repository }}
+          path: proj
+      - name: Checkout Github repository (Private)
+        if: matrix.agent.github_repository != 0 && matrix.agent.github_repository != NaN && (matrix.agent.github_private_ssh_key_secret != 0 && matrix.agent.github_private_ssh_key_secret != NaN)
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ matrix.agent.github_repository }}
+          ssh-key: ${{ secrets[matrix.agent.github_private_ssh_key_secret] }}
+          path: proj
+      - name: Setup Google Cloud access
+        if: matrix.agent.github_repository != 0 && matrix.agent.github_repository != NaN
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_key: ${{ secrets.GCR_KEY }}
+      - name: Authenticate Docker
+        if: matrix.agent.github_repository != 0 && matrix.agent.github_repository != NaN
+        run: gcloud auth configure-docker
+      - name: Build and push Docker image
+        if: matrix.agent.github_repository != 0 && matrix.agent.github_repository != NaN
+        uses: docker/build-push-action@v2
+        with:
+          context: proj
+          push: true
+          tags: gcr.io/trustbit-hackathon/${{ matrix.agent.unique_id }}:latest
+
