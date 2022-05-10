@@ -9,6 +9,7 @@ on:
 
 jobs:
   loadAgentsJson:
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
