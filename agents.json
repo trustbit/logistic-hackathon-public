@@ -28,5 +28,11 @@
       "is_fleet": false,
       "github_repository": "vsavenkov/hackthon-agent-dryrun2-vadim",
       "github_private_ssh_key_secret": "TEAM_VADIM"
+    },
+    {
+      "unique_id": "team-krasina15",
+      "is_fleet": false,
+      "github_repository": "krasina15/hackathon-python-agent",
+      "github_private_ssh_key_secret": "TEAM_KRASINA15"
     }
 ]
