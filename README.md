@@ -106,14 +106,12 @@ To get you started quickly, we created several template repositories for you. De
 </br>
 <img src="images/use-as-template.jpeg" width="640"/>
 </br>
-</br>
 
 ### 2. Add team members as collaborators to your private repository
 
 If you are participating in a team, just collect the GitHub handles of you team members and add them in the [Collaborators and teams](/settings/access) page of your repository's settings. That way all of them will be able to contribute code.
 
 <img src="images/collaborators.jpeg" width="640"/>
-</br>
 </br>
 
 ### 3. Create a new SSH key for the competition build system
@@ -145,11 +143,11 @@ Steps in detail:
       "github_private_ssh_key_secret": "TEAM_TRUSTBIT"
     }
 ```
+- If you are participating alone set `is_fleet` to `false`. If you are participating as a team set it to `true`.
 
-- As soon as your PR is merged, we will have your repository included in the build, which will run every 5 minutes and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions
+- As soon as your PR is merged, we will have your repository included in our build, which is scheduled to run every 5 minutes and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml
 
-
-### Competition simulation
+## Competition simulation
 - Link to Slack space
 - Link to trace bucket
 - Link to Grafana
@@ -157,12 +155,5 @@ Steps in detail:
 - Instructions how to get agents into the competition simulation
 - Explanation how to display traces
 - Explanation how and when the competition simulation is running
-
-
-We launch that as a server in a cloud. Attach a few Grafana dashboards. Competitors could control trucks (individual or fleets) by uploading scripts that make decisions (use JS VM or something else that we can easily and safely sandbox). 
-
-
-
-
 
 ## We are hiring
