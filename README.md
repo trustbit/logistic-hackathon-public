@@ -95,13 +95,59 @@ Driving emits CO2 which is calculated via a simplified COPERT4 formula (see also
 ### Cargo offers
 
 
-### Agent template repositories
-Explanation that public repos are also supported but that competitors can see the code then
-- logistic-hackathon-agent-template-java
-- logistic-hackathon-agent-template-python
+## Agent template repositories and comeptition build system
 
-### Local simulation
-- Instructions how to run simulation locally
+### 1. Create private repository from a template
+To get you started quickly, we created several template repositories for you. Depending on your language preference, click on one of the links below and then click the `Use this template` button to create a new **private** repository in your GitHub account with all the contents of the template. Make sure to make this new repository private, as otherwise all of your competitors will be able to see your code.
+
+- [Java agent template repository](https://github.com/trustbit/logistic-hackathon-agent-template-java)
+- [Python agent template repository](https://github.com/trustbit/logistic-hackathon-agent-template-python)
+
+</br>
+<img src="images/use-as-template.jpeg" width="640"/>
+</br>
+</br>
+
+### 2. Add team members as collaborators to your private repository
+
+If you are participating in a team, just collect the GitHub handles of you team members and add them in the [Collaborators and teams](/settings/access) page of your repository's settings. That way all of them will be able to contribute code.
+
+<img src="images/collaborators.jpeg" width="640"/>
+</br>
+</br>
+
+### 3. Create a new SSH key for the competition build system
+Now we need to make sure the competition build system has access to your private repository. We will do that by creating an SSH key pair and by adding the public key to your repository's `Deploy keys` and by sending the private SSH key to our support staff, who will add it to our build system.
+
+Steps in detail:
+
+- Execute the following command on your local machine:
+
+    `ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -q -N "" -f hackathon`
+
+- This will create 2 files in your current directory: 
+  - `hackathon.pub` - the public key
+  - `hackathon` - the private key
+
+- Go to the [Deploy keys](settings/keys) page of your repository's settings and create a new deploy key `Hackathon` there and paste in the contents of your **public key file**.
+
+<img src="images/deploy-key.jpeg" width="480"/>
+
+- You will then need to send the **private SSH key file** to us via Slack. The best way to do that is to go to our hackathon Slack workspace, create a new channel there `support-[unique-team-id]` and invite your team members and our support staff via Slack handle `@support-staff`. If you did not join the Slack workspace yet, you can do that [here](https://join.slack.com/t/trustbitsusta-vl26615/shared_invite/zt-17i36qlc1-h6L0GsJov2gPLLSYFaqNmw).
+
+- Open a new PR for this repository and add your teams details in the `agents.json` file. The secret for your team will be created by our support staff in the meantime. The naming convention is `TEAM_[UNIQUE_ID]`. Here is a template for a valid entry in the `agents.json` file:
+
+```json
+    {
+      "unique_id": "trustbit",
+      "is_fleet": false,
+      "github_repository": "trustbit/example-truck-agent",
+      "github_private_ssh_key_secret": "TEAM_TRUSTBIT"
+    }
+```
+
+- As soon as your PR is merged, we will have your repository included in the build, which will run every 5 minutes and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions
+
 
 ### Competition simulation
 - Link to Slack space
