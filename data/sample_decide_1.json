@@ -1,0 +1,341 @@
+{
+  "truck": {
+    "balance": 7426.0,
+    "uid": 0,
+    "loc": "Bilbao",
+    "hours_since_full_rest": 202.0,
+    "time": 202.0
+  },
+  "offers": [
+    {
+      "uid": 68,
+      "origin": "Zaragoza",
+      "dest": "Rotterdam",
+      "name": "68",
+      "price": 1563.0,
+      "eta_to_cargo": 4.07,
+      "km_to_cargo": 244.0,
+      "km_to_deliver": 1953.0,
+      "eta_to_deliver": 21.34
+    },
+    {
+      "uid": 44,
+      "origin": "Lodz",
+      "dest": "Plovdiv",
+      "name": "44",
+      "price": 1323.0,
+      "eta_to_cargo": 25.45,
+      "km_to_cargo": 2434.0,
+      "km_to_deliver": 3856.0,
+      "eta_to_deliver": 39.61
+    },
+    {
+      "uid": 61,
+      "origin": "Lodz",
+      "dest": "Rijeka",
+      "name": "61",
+      "price": 1296.0,
+      "eta_to_cargo": 25.45,
+      "km_to_cargo": 2434.0,
+      "km_to_deliver": 3839.0,
+      "eta_to_deliver": 41.61
+    },
+    {
+      "uid": 1,
+      "origin": "Poznan",
+      "dest": "Almere",
+      "name": "1",
+      "price": 1103.0,
+      "eta_to_cargo": 23.65,
+      "km_to_cargo": 2121.0,
+      "km_to_deliver": 3277.0,
+      "eta_to_deliver": 36.72
+    },
+    {
+      "uid": 2,
+      "origin": "Zaragoza",
+      "dest": "Rijeka",
+      "name": "2",
+      "price": 2254.0,
+      "eta_to_cargo": 4.07,
+      "km_to_cargo": 244.0,
+      "km_to_deliver": 2703.0,
+      "eta_to_deliver": 30.8
+    },
+    {
+      "uid": 14,
+      "origin": "Barcelona",
+      "dest": "Riga",
+      "name": "14",
+      "price": 2393.0,
+      "eta_to_cargo": 9.74,
+      "km_to_cargo": 828.0,
+      "km_to_deliver": 3449.0,
+      "eta_to_deliver": 36.25
+    },
+    {
+      "uid": 64,
+      "origin": "Bologna",
+      "dest": "Toulouse",
+      "name": "64",
+      "price": 1108.0,
+      "eta_to_cargo": 18.81,
+      "km_to_cargo": 1753.0,
+      "km_to_deliver": 2932.0,
+      "eta_to_deliver": 31.619999999999997
+    },
+    {
+      "uid": 11,
+      "origin": "Naples",
+      "dest": "Amsterdam",
+      "name": "11",
+      "price": 1491.0,
+      "eta_to_cargo": 22.49,
+      "km_to_cargo": 2218.0,
+      "km_to_deliver": 3733.0,
+      "eta_to_deliver": 38.61
+    },
+    {
+      "uid": 54,
+      "origin": "Poznan",
+      "dest": "Genoa",
+      "name": "54",
+      "price": 1207.0,
+      "eta_to_cargo": 23.65,
+      "km_to_cargo": 2121.0,
+      "km_to_deliver": 3413.0,
+      "eta_to_deliver": 37.17
+    },
+    {
+      "uid": 20,
+      "origin": "Murcia",
+      "dest": "Warsaw",
+      "name": "20",
+      "price": 2880.0,
+      "eta_to_cargo": 10.3,
+      "km_to_cargo": 667.0,
+      "km_to_deliver": 3853.0,
+      "eta_to_deliver": 42.1
+    },
+    {
+      "uid": 56,
+      "origin": "Poznan",
+      "dest": "Almere",
+      "name": "56",
+      "price": 1092.0,
+      "eta_to_cargo": 23.65,
+      "km_to_cargo": 2121.0,
+      "km_to_deliver": 3277.0,
+      "eta_to_deliver": 36.72
+    },
+    {
+      "uid": 16,
+      "origin": "Munich",
+      "dest": "Brasov",
+      "name": "16",
+      "price": 1304.0,
+      "eta_to_cargo": 18.86,
+      "km_to_cargo": 1901.0,
+      "km_to_deliver": 3257.0,
+      "eta_to_deliver": 33.519999999999996
+    },
+    {
+      "uid": 60,
+      "origin": "Paris",
+      "dest": "Valencia",
+      "name": "60",
+      "price": 1456.0,
+      "eta_to_cargo": 10.38,
+      "km_to_cargo": 795.0,
+      "km_to_deliver": 2368.0,
+      "eta_to_deliver": 29.060000000000002
+    },
+    {
+      "uid": 9,
+      "origin": "Bologna",
+      "dest": "Frankfurt",
+      "name": "9",
+      "price": 881.0,
+      "eta_to_cargo": 18.81,
+      "km_to_cargo": 1753.0,
+      "km_to_deliver": 2644.0,
+      "eta_to_deliver": 29.119999999999997
+    },
+    {
+      "uid": 55,
+      "origin": "Milan",
+      "dest": "Valencia",
+      "name": "55",
+      "price": 1588.0,
+      "eta_to_cargo": 15.78,
+      "km_to_cargo": 1553.0,
+      "km_to_deliver": 3304.0,
+      "eta_to_deliver": 34.39
+    },
+    {
+      "uid": 65,
+      "origin": "Murcia",
+      "dest": "Szczecin",
+      "name": "65",
+      "price": 2548.0,
+      "eta_to_cargo": 10.3,
+      "km_to_cargo": 667.0,
+      "km_to_deliver": 3548.0,
+      "eta_to_deliver": 39.7
+    },
+    {
+      "uid": 58,
+      "origin": "Zaragoza",
+      "dest": "Salzburg",
+      "name": "58",
+      "price": 1795.0,
+      "eta_to_cargo": 4.07,
+      "km_to_cargo": 244.0,
+      "km_to_deliver": 2212.0,
+      "eta_to_deliver": 24.02
+    },
+    {
+      "uid": 59,
+      "origin": "Lodz",
+      "dest": "Piraeus",
+      "name": "59",
+      "price": 1708.0,
+      "eta_to_cargo": 25.45,
+      "km_to_cargo": 2434.0,
+      "km_to_deliver": 4334.0,
+      "eta_to_deliver": 45.519999999999996
+    },
+    {
+      "uid": 42,
+      "origin": "Poznan",
+      "dest": "Pecs",
+      "name": "42",
+      "price": 1103.0,
+      "eta_to_cargo": 23.65,
+      "km_to_cargo": 2121.0,
+      "km_to_deliver": 3279.0,
+      "eta_to_deliver": 36.519999999999996
+    },
+    {
+      "uid": 67,
+      "origin": "Munich",
+      "dest": "Riga",
+      "name": "67",
+      "price": 1428.0,
+      "eta_to_cargo": 18.86,
+      "km_to_cargo": 1901.0,
+      "km_to_deliver": 3449.0,
+      "eta_to_deliver": 36.25
+    },
+    {
+      "uid": 69,
+      "origin": "Cluj-Napoca",
+      "dest": "Rotterdam",
+      "name": "69",
+      "price": 1879.0,
+      "eta_to_cargo": 33.46,
+      "km_to_cargo": 3027.0,
+      "km_to_deliver": 5119.0,
+      "eta_to_deliver": 56.230000000000004
+    },
+    {
+      "uid": 25,
+      "origin": "Milan",
+      "dest": "Split",
+      "name": "25",
+      "price": 1236.0,
+      "eta_to_cargo": 15.78,
+      "km_to_cargo": 1553.0,
+      "km_to_deliver": 2868.0,
+      "eta_to_deliver": 30.35
+    },
+    {
+      "uid": 47,
+      "origin": "Naples",
+      "dest": "Paris",
+      "name": "47",
+      "price": 1630.0,
+      "eta_to_cargo": 22.49,
+      "km_to_cargo": 2218.0,
+      "km_to_deliver": 3909.0,
+      "eta_to_deliver": 39.18
+    },
+    {
+      "uid": 49,
+      "origin": "Milan",
+      "dest": "Pleven",
+      "name": "49",
+      "price": 1534.0,
+      "eta_to_cargo": 15.78,
+      "km_to_cargo": 1553.0,
+      "km_to_deliver": 3231.0,
+      "eta_to_deliver": 32.2
+    },
+    {
+      "uid": 5,
+      "origin": "Lodz",
+      "dest": "Charleroi",
+      "name": "5",
+      "price": 1329.0,
+      "eta_to_cargo": 25.45,
+      "km_to_cargo": 2434.0,
+      "km_to_deliver": 3859.0,
+      "eta_to_deliver": 39.51
+    },
+    {
+      "uid": 57,
+      "origin": "Palermo",
+      "dest": "Brussels",
+      "name": "57",
+      "price": 1641.0,
+      "eta_to_cargo": 26.45,
+      "km_to_cargo": 2456.0,
+      "km_to_deliver": 4240.0,
+      "eta_to_deliver": 45.44
+    },
+    {
+      "uid": 70,
+      "origin": "Bologna",
+      "dest": "Marseille",
+      "name": "70",
+      "price": 653.0,
+      "eta_to_cargo": 18.81,
+      "km_to_cargo": 1753.0,
+      "km_to_deliver": 2385.0,
+      "eta_to_deliver": 27.349999999999998
+    },
+    {
+      "uid": 39,
+      "origin": "Murcia",
+      "dest": "Szeged",
+      "name": "39",
+      "price": 2721.0,
+      "eta_to_cargo": 10.3,
+      "km_to_cargo": 667.0,
+      "km_to_deliver": 3675.0,
+      "eta_to_deliver": 41.53
+    },
+    {
+      "uid": 15,
+      "origin": "Lodz",
+      "dest": "Iasi",
+      "name": "15",
+      "price": 1301.0,
+      "eta_to_cargo": 25.45,
+      "km_to_cargo": 2434.0,
+      "km_to_deliver": 3826.0,
+      "eta_to_deliver": 39.81
+    },
+    {
+      "uid": 40,
+      "origin": "Bologna",
+      "dest": "Poznan",
+      "name": "40",
+      "price": 1283.0,
+      "eta_to_cargo": 18.81,
+      "km_to_cargo": 1753.0,
+      "km_to_deliver": 3126.0,
+      "eta_to_deliver": 32.48
+    }
+  ]
+}
