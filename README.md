@@ -18,7 +18,7 @@ Experts in data science, machine learning and software development will work tog
 
 Freight transports, delivery routes and logistics systems are key drivers of the European economy. They allow countries to work together across borders, achieve better results together and find efficient and sustainable solutions for the future through cooperation and collaboration. Trustbit aims to foster this cooperation and brings together experts, developers and scientists to demonstrate what we can achieve by joining forces.
 
-You do not have to be an expert in machine learning or data science. If you know how to code in one of our supported languages (Python and Java) you are ready to go. A simple script making decisions via if / else branches might even be better than an involved machine learning model. We are excited to see what you can achieve!
+You do not have to be an expert in machine learning or data science. If you know how to code in one of our supported languages (C#, Java, Python) you are ready to go. A simple script making decisions via if / else branches might even be better than an involved machine learning model. We are excited to see what you can achieve!
 
 ## Simulation
 The simulation is represented by a map of locations connected by a network of streets. Some locations are special, as they produce goods, which will need shipping to other locations. The participants of the competition will get to program trucks which can load the cargo and deliver it. The goal is to be more efficient than the trucks of competitors.
@@ -101,6 +101,7 @@ Driving emits CO2 which is calculated via a simplified COPERT4 formula (see also
 ### 1. Create private repository from a template
 To get you started quickly, we created several template repositories for you. Depending on your language preference, click on one of the links below and then click the `Use this template` button to create a new **private** repository in your GitHub account with all the contents of the template. Make sure to make this new repository private, as otherwise all of your competitors will be able to see your code.
 
+- [C# agent template repository](https://github.com/trustbit/logistic-hackathon-agent-template-csharp)
 - [Java agent template repository](https://github.com/trustbit/logistic-hackathon-agent-template-java)
 - [Python agent template repository](https://github.com/trustbit/logistic-hackathon-agent-template-python)
 
