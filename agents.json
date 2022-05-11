@@ -34,5 +34,11 @@
       "is_fleet": false,
       "github_repository": "krasina15/hackathon-python-agent",
       "github_private_ssh_key_secret": "TEAM_KRASINA15"
+    },
+    {
+      "unique_id": "team-krasina",
+      "is_fleet": false,
+      "github_repository": "krasina15/hackathon-python-agent",
+      "github_private_ssh_key_secret": "TEAM_KRASINA15"
     }
 ]
