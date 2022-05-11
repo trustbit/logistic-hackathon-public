@@ -94,7 +94,7 @@ Driving emits CO2 which is calculated via a simplified COPERT4 formula (see also
 
 ### Cargo offers
 
-## Agent template repositories and comeptition build system
+## Agent template repositories and competition build system
 
 **We recommend to perform the steps of this section at the very beginning of the hackathon, just by using one of the supplied language templates without any changes. After the agent build is setup you can start to improve the truck agents behavior.**
 
@@ -150,7 +150,7 @@ Steps in detail:
 
 ## Competition runs
 
-**Please follow the instructions under [Agent template repositories and comeptition build system](#agent-template-repositories-and-comeptition-build-system) first, to get the initial setup out of the way quickly.**
+**Please follow the instructions under [Agent template repositories and competition build system](#agent-template-repositories-and-competition-build-system) first, to get the initial setup out of the way quickly.**
 
 One simulation run takes **exactly 5 minutes**. Before each run we pull the latest versions of your truck agents. As the [build](https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml) also runs every 5 minutes it can happen, that your newest version will miss a simulation run, but it will definitely be part of the next one then.
 
