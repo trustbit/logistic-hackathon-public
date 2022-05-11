@@ -94,8 +94,9 @@ Driving emits CO2 which is calculated via a simplified COPERT4 formula (see also
 
 ### Cargo offers
 
-
 ## Agent template repositories and comeptition build system
+
+**We recommend to perform the steps of this section at the very beginning of the hackathon, just by using one of the supplied language templates without any changes. After the agent build is setup you can start to improve the truck agents behavior.**
 
 ### 1. Create private repository from a template
 To get you started quickly, we created several template repositories for you. Depending on your language preference, click on one of the links below and then click the `Use this template` button to create a new **private** repository in your GitHub account with all the contents of the template. Make sure to make this new repository private, as otherwise all of your competitors will be able to see your code.
@@ -145,15 +146,32 @@ Steps in detail:
 ```
 - If you are participating alone set `is_fleet` to `false`. If you are participating as a team set it to `true`.
 
-- As soon as your PR is merged, we will have your repository included in our build, which is scheduled to run every 5 minutes and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml
+- As soon as your PR is merged, we will have your repository included in our build, which is scheduled to run **every 5 minutes** and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml
 
-## Competition simulation
-- Link to Slack space
+## Competition runs
+
+**Please follow the instructions under [Agent template repositories and comeptition build system](#agent-template-repositories-and-comeptition-build-system) first, to get the initial setup out of the way quickly.**
+
+One simulation run takes **exactly 5 minutes**. Before each run we pull the latest versions of your truck agents. As the [build](https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml) also runs every 5 minutes it can happen, that your newest version will miss a simulation run, but it will definitely be part of the next one then.
+
+So what happens during a simulation run exactly? See the following step-by-step explanation:
+
+1) Fetch the latest version of the [agents.json](https://github.com/trustbit/logistic-hackathon-public/blob/main/agents.json) file, so the simulation knows, which teams want to participate.
+1) Start Docker containers for all the truck agents and make sure that they are reachable by the simulation runtime. If one of the truck agent containers is not reachable (maybe no successful build happened yet for a team, or the agent returns errors when called), it will be excluded from the simulation run.
+1) We pre-warm all truck agents to make sure they can service simulation requests as quickly as possible.
+1) Generate a list of available cargo offers and randomize the order of truck agents.
+1) Loop through the list of truck agents and ask each one sequentially for a decision on their next move.
+1) Execute the desired move. 
+1) All truck agents are competing for the same list of offers. For example, if a truck agent decides to `DELIVER` a cargo offer, the same offer will not be available for the next truck agent.
+1) Each move takes a certain amount of time, depending on factors like maximum speed on the roads and the distance a truck agent has to travel. The simulation keeps track of the truck agent actions and will call them again after their current move is finished.
+
+TODO: continue here
+1) Truck agents have a `balance` which represents the money in their bank account. Fuel prices and monthly
+
+### Results of a simulation round
 - Link to trace bucket
 - Link to Grafana
-- Explanation for agents.json
-- Instructions how to get agents into the competition simulation
 - Explanation how to display traces
-- Explanation how and when the competition simulation is running
+- Add image for Grafana
 
 ## We are hiring
