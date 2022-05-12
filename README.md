@@ -137,7 +137,27 @@ CO2 emissions are counted as expences, based on the CO2 offset cost per kg.
 
 ### Cargo offers
 
+Simulation runtime tracks cargos available for the delivery. Whenever it is time for a truck to make a decision, it will receive a personalized list of cargo offers. 
 
+```json
+{
+  "uid": 100,                # unique cargo ID
+  "origin": "Zaragoza",      # city to pick it up
+  "dest": "Innsbruck",       # destination
+  "name": "Fruits",          # kind
+  "price": 1778.0,           # money you get for delivery
+  "eta_to_cargo": 8.16,      # ETA from current loc to pickup loc
+  "km_to_cargo": 780.0,      # km to pickup location
+  "km_to_deliver": 2730.0,   # total kms to pick up AND deliver
+  "eta_to_deliver": 27.76    # ETA for picking up and delivering
+}
+```
+
+
+
+ETA and KM estimates are relative to the current position of the truck. They account only for the driving time, but don't account for the loading/unloading and waiting times.
+
+You can check out for the sample cargo offers in [data/](data/) directory.
 
 ## Available Data
 
