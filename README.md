@@ -182,7 +182,36 @@ E.g.:
 
 
 
+#### Manual Analysis
 
+The file looks like the snippet below. Actions of all teams are intertwined there:
+
+```json
+{"name": "DRIVE", "ph": "B", "ts": 18941.0, "pid": 5, "tid": 1, "args": {"a": "Salzburg", "b": "Linz", "fuel_l": 24.19, "co2_kg": 63.86, "cargo": 15, "km": 107, "delay": 0, "incident_cost": 0}},
+{"name": "DRIVE", "ph": "E", "ts": 20156.90909090909, "pid": 5, "tid": 1},
+{"pid": 5, "ts": 20156.90909090909, "ph": "C", "name": "balance", "args": {"value": 24806}},
+{"name": "DECIDE", "ph": "i", "ts": 19000.0, "pid": 8, "tid": 0, "s": "t", "args": {"cmd": "SLEEP", "arg": "1"}},
+{"name": "SLEEP", "ph": "B", "ts": 19000.0, "pid": 8, "tid": 0},
+{"name": "SLEEP", "ph": "E", "ts": 20000.0, "pid": 8, "tid": 0},
+{"pid": 8, "ts": 20000.0, "ph": "C", "name": "balance", "args": {"value": 8713}},
+{"name": "DECIDE", "ph": "i", "ts": 19080.0, "pid": 4, "tid": 2, "s": "t", "args": {"cmd": "SLEEP", "arg": "1"}},
+{"name": "SLEEP", "ph": "B", "ts": 19080.0, "pid": 4, "tid": 2},
+{"name": "SLEEP", "ph": "E", "ts": 20080.0, "pid": 4, "tid": 2},
+```
+
+Unique identifiers are `pid` (team ID). You can look them up for your truck at the beginning of the file in the `M` (Metadata) records:
+
+```json
+{"name": "process_name", "ph": "M", "pid": 1, "args": {"name": "npc_truck_naive"}},
+{"name": "thread_name", "ph": "M", "pid": 1, "tid": 0, "args": {"name": "npc_truck_naive/0"}},
+{"name": "process_name", "ph": "M", "pid": 2, "args": {"name": "npc_truck_rinat"}},
+{"name": "thread_name", "ph": "M", "pid": 2, "tid": 0, "args": {"name": "npc_truck_rinat/0"}},
+{"name": "process_name", "ph": "M", "pid": 3, "args": {"name": "npc_truck_seb"}},
+{"name": "thread_name", "ph": "M", "pid": 3, "tid": 0, "args": {"name": "npc_truck_seb/0"}},
+{"name": "process_name", "ph": "M", "pid": 4, "args": {"name": "npc_fleet_profit_seeking"}}
+```
+
+If you have multple trucks, they will share the same `pid` but will have different `tid`.
 
 ### Observability Dashboard
 
