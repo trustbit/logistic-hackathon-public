@@ -182,6 +182,18 @@ E.g.:
 
 
 
+
+
+### Observability Dashboard
+
+We have  dashboards with real-time insight into the system across the simulation runs. 
+
+Each run takes 5-10 minutes, and you can see it as a separate peak on the charts.
+
+- [General dashboard](https://telemetry.endpoints.trustbit-hackathon.cloud.goog)
+
+![image-20220512110929530](images/image-20220512110929530.png) 
+
 ## Agent template repositories and competition build system
 
 **We recommend to perform the steps of this section at the very beginning of the hackathon, just by using one of the supplied language templates without any changes. After the agent build is setup you can start to improve the truck agents behavior.**
