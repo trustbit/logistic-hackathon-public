@@ -21,29 +21,87 @@ Freight transports, delivery routes and logistics systems are key drivers of the
 You do not have to be an expert in machine learning or data science. If you know how to code in one of our supported languages (C#, Java, Python) you are ready to go. A simple script making decisions via if / else branches might even be better than an involved machine learning model. We are excited to see what you can achieve!
 
 ## Simulation
-The simulation is represented by a map of locations connected by a network of streets. Some locations are special, as they produce goods, which will need shipping to other locations. The participants of the competition will get to program trucks which can load the cargo and deliver it. The goal is to be more efficient than the trucks of competitors.
+
+We simulate a road network in Europe. For the purpose of the hackathon, it is simplified.
+
+![image-20220512095546609](images/image-20220512095546609.png)
+
+The world map for this road network is fixed and available: [map.json](data/map.json). **Map schema** is explained later.
+
+The world map is represented by locations connected by a network of roads.  Some locations are special, as they produce goods, which will need shipping to other locations. 
+
+Locations for producing and consuming goods are semi-deterministic and are not revealed publicly. You can analyse the **simulation trace data** to find out the patterns.
+
+The participants of the competition will get to program trucks which can load the cargo and deliver it.  **The goal is to make money by delivering the cargo**. 
+
+If you run out of money, your truck(s) are suspended for the current simulation run.
 
 This is very much like economic games you might have played in high school.
 
-### Runtime and rules
+### Implementation
 
-So how does the simulation work exactly? The simulation runtime is provided by Trustbit and is responsible for keeping track of all stats like the current list of cargo offers (= produced goods), the trucks on the map, the current simulation date and time, fuel cost and many more. 
+So how does the simulation work exactly? 
+
+The simulation runtime is provided by Trustbit and is responsible for keeping track of all stats like the current list of cargo offers (= produced goods), the trucks on the map, the current simulation date and time, fuel cost and many more. 
 
 When the simulation is started it loads the world map, generates an initial list of cargo offers and spawns the trucks of the participants randomly on the map. Then the simulation will iterate through the list of trucks and will ask each one of them for their next move decision.
 
+Afterwards, we simulate the passing of time via [discrete-event simulation](https://en.wikipedia.org/wiki/Discrete-event_simulation). Trucks travel, time passes and we jump forward to the next important event.
+
+### Your Workflow
+
+1. You code an agent that controls truck(s) and submit it into the competition.
+2. That agents gets packaged as a docker container
+3. Regularly (every 5-10 minutes) we pull all agents in and start a new simulation run.
+4. You can observe the real-time dashboards during the run. 
+5. You can also download full simulation trace immediately after the run ends
+
+The goal is to **observe, iterate and improve**.
+
+We have two sets of rules:
+
+- **Efficiency rules** - in effect from the start of the competition
+- **Sustainability rules** - come in effect in the second half of the Hackathon
+
+### Efficiency Rules
+
+ These rules are in effect since the start of the game.
+
+- Your **truck gets money for delivering** cargo. Prices are market-driven, certain cargos types. tend to have better margins out-of-the-box.
+- You spend money on gas (fuel consumption uses COPERT formula for a loaded/empty truck and diesel price of `2.023`)
+- **Every week, you pay fixed operational costs**. So standing idle and doing nothing is a loosing strategy. You need to hustle to keep.
+- If your balance is negative at the end of the week, the truck is bankrupt until the end of the simulation run.
+- Weekly revenue is taxed progressively.
+
+### Sustainability Rules
+
+These rules come into the effect for the second part of the hackathon.
+
+- **CO2 emissions** (computed via COPER) have an additional associated cost (CO2 offset cost)
+- **Truck drivers get fatigued** over the time. Fatigue accumulates and increases the chance of road incidents. Incidents cause delay and trigger an immediate rest. Full 8-hour sleep is needed to eliminate fatugue.
+- **Locations have working hours**. If truck arrives to a location outside of the working hours, it has to wait.
+
 ### Trucks
-Trucks can decide to deliver a cargo offer, drive to a specific location empty, or let the driver sleep for a specific amount of time:
 
-- `DELIVER` [cargo uid] - The truck reserves a specific cargo offer, drives to the current cargo location, loads the cargo onto the truck, plans a route to the cargo destination, drives there and unloads the cargo. Depending on the distance and the current stats of the truck driver, it might be necessary to put in a rest along the way. The same applies if the truck arrives outside of the destinations business hours.
-- `ROUTE` [location name] - A truck might decide to plan a route and drive to a specific location, although it is currently empty. For example a truck could anticipate, that a lucrative cargo offer will soon be available at a location and wants to minimize the pick up and delivery time.
-- `SLEEP` [number of hours] - When there are no cargo offers available, or when a truck driver is already on duty for a long time, it might be the best strategy to rest for a few hours. 
+You control trucks by implementing a `decide` function. This function is called whenever the simulation doesn't have a plan for the Truck (e.g. at the start of the simulation).
 
-Each action by a truck agent is an atomic action which will always succeed. After each decision is executed, the truck will be able to decide for the next move.
+The simulation runtime will build a current world state for the truck (list of available cargo) and request a decision.
+
+Trucks can decide to **deliver a cargo**, **drive to a specific location** empty, or **let the driver sleep** for a specific amount of time:
+
+- `DELIVER CARGO_UID` (e.g. `DELIVER 23`) - The truck reserves a specific cargo offer, drives to the current cargo location, loads the cargo onto the truck, plans a route to the cargo destination, drives there and unloads the cargo. Fatigue and working hour effects can apply here, if Efficiency Rules are in effect.
+- `ROUTE LOCATION` (e.g. `ROUTE Berlin`) - A truck might decide to plan a route and drive to a specific location, although it is currently empty. For example a truck could anticipate, that a lucrative cargo offer will soon be available at a location and wants to minimize the pick up and delivery time.
+- `SLEEP HOURS` (e.g. `SLEEP 1` or `SLEEP 8`) - When there are no cargo offers available, or when a truck driver is already on duty for a long time, it might be the best strategy to rest for a few hours. Note, that sleeping 8 times for one hour doesn't constitute a full rest.
+
+Each action by a truck agent is an atomic action which will always succeed. After the decision is fully executed, the truck will be able to decide again.
 
 ### Simulation time
-The current time is represented by the float `time` in the simulation, which has a range of 0.0 to 23.99. A value of 13.25 means `13:15`. Each action of a truck takes time:
+The current time is represented by the float `time` in the simulation. It represents the number of hours that have passed since the start of the simulation. 
 
-Driving a truck on the map, takes a certain amount of time, which is calculated by the distance and the speed limits of a route. The cargo offers cargo delivery takes 5 hours, the truck will execute all necessary steps. Additional time might pass, if the driver has to rest, due to resting time regulations (see next section).
+- A value of 13.25 means `13:15`. 
+- `26.0` means `1 day 2 hours`
+
+Each action of a truck takes time. Driving a truck on the map, takes a certain amount of time, which is calculated by the distance and the speed limits of a route. The cargo offers cargo delivery takes 5 hours, the truck will execute all necessary steps. Additional time might pass, if the driver has to rest, due to resting time regulations (see next section).
 
 Example: 
 - `loc`=A, `time`=8 
@@ -54,43 +112,28 @@ Example:
 
   The truck arrives at 13:30 at location B.
 
-
-### Resting time of truck drivers
-
-The drivers are allowed to drive for a certain amount of time until they need to rest. The simulation will count the driving hours and make it available to the truck agent scripts via the `driving_non_stop` counter.
-
-The following simplified regulations apply:
-  - Reserving, loading and unloading cargo is not tracked by the `driving_non_stop` counter.
-  - Each hour driven will increase the `driving_non_stop` counter of the truck driver by 1 hour.
-  - Each hour sleeping will reduce the `driving_non_stop` counter of the truck driver by 1 hour.
-  - Exception: should the driver's `driving_non_stop` counter reach 9 hours, they will be forced to rest for 11 hours, reducing the counter to 0 again.
-
-Example: 
- - `loc`=X, `time`=12, `driving_non_stop`=0 
-    
-    The driver decides to pick up a cargo offer from origin A and deliver it to destination B. It will take them 5 hours to reach location A and will take another 4 hours to deliver the cargo to location B. So the truck drives to location A.
- 
- - `loc`=A, `time`=17, `driving_non_stop`=5
- 
-    The truck arrives at location A and the cargo is loaded onto the truck. The truck starts the journey towards it's destination. 
-    
-  - `loc`=A->B, `time`=21, `driving_non_stop`=5
-    
-    After 4 hours, the driver will need to rest for 11 hours as the `driving_non_stop` counter reached 9 hours. The simulation will do that automatically.
-
-  - `loc`=A->B, `time`=8, `driving_non_stop`=0
-      
-    The truck driver is rested now and drive another 2 hours to reach its destination.
-    
-  - `loc`=B, `time`=10, `driving_non_stop`=2
-    
-    At location B the cargo will be unloaded. Would the truck have arrived outside of the business hours of the destination, the driver would automatically sleep until the destination is open for business.
-
-### Opening hours of destination locations
+Hint: you can get time of the day by doing a modulo operation: `tod = time mod 24`
 
 
-### CO2 emissions
+### Resting time of truck drivers (Sustainability Only)
+
+When _Sustainability Rules_ are in play, Driver fatigue mechanic comes into the play. 
+
+Drivers can get tired over the time. More time has passed since the last full rest (8 hours of undisturbed SLEEP), higher the chance of the road incident during the travels. 
+
+Road incidents cause delay and trigger an immediate `SLEEP 8` afterwards.
+
+### Working Hours (Sustainability Only)
+
+When _Sustainability Rules_ are in play, locations have working hours. If a truck arrives to a location outside of the working hours, it will have to wait.
+
+If waiting time is 8 hours or more, it counts as a full rest.
+
+
+### CO2 emissions (Sustainability Only)
 Driving emits CO2 which is calculated via a simplified COPERT4 formula (see also http://emisia.com/content/copert-documentation). The simulation tracks the emissions for all trucks on the map. Try to keep your emissions as low as possible, while maximizing your profit.
+
+CO2 emissions are counted as expences, based on the CO2 offset cost per kg.
 
 ### Cargo offers
 
