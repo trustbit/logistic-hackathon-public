@@ -29,10 +29,9 @@ components:
     DecideRequest:
       properties:
         truck:
-          description: "Information about the truck"
           $ref: "#/components/schemas/TruckState"
         offers:
-          description: "List of currently available cargo offers to deliver."
+          description: "List of currently available cargo offers to deliver"
           type: array
           items:
             $ref: "#/components/schemas/CargoOffer"
@@ -41,6 +40,8 @@ components:
           example: false
 
     TruckState:
+      description: "All the information about the truck at this point in time"
+      type: object
       properties:
         uid:
           description: "Truck ID, unique within the truck fleet of that team"
@@ -50,13 +51,13 @@ components:
         loc:
           description: "The current location name where the truck is located"
           type: string
-          example: "Rustport"
+          example: "Vienna"
         balance:
           description: "The bank account balance of the truck driver / the truck fleet"
           type: number
           format: long
           example: 100.0
-        driving_non_stop:
+        hours_since_full_rest:
           description: "The amount of driving hours the truck driver is on the road"
           type: number
           format: long
@@ -70,6 +71,7 @@ components:
           example: 13.25
 
     CargoOffer:
+      type: object
       properties:
         uid:
           description: "Unique cargo ID"
@@ -78,7 +80,7 @@ components:
         origin:
           description: "Location name where the cargo is currently located"
           type: string
-          example: "Rustport"
+          example: "Bratislava"
         dest:
           description: "Destination location name for the cargo delivery"
           type: string
@@ -110,6 +112,7 @@ components:
           format: long
 
     DecideResponse:
+      type: object
       properties:
         command:
           type: string
@@ -135,6 +138,7 @@ components:
         - `ROUTE` to the cargo destination location
         - `SLEEP` Possibly the driver will need to sleep during the drive or at the destination, if he arrives outside of the destination's business hours
         - Unload the cargo at the destination
+      type: object
       allOf:
         - $ref: '#/components/schemas/DecideResponse'
         - type: object
@@ -148,6 +152,7 @@ components:
 
     RouteResponse:
       description: "Drive the shortest route from the current truck location to a destination location"
+      type: object
       allOf:
         - $ref: '#/components/schemas/DecideResponse'
         - type: object
@@ -161,6 +166,7 @@ components:
 
     SleepResponse:
       description: "Sleep for a certain amount of hours"
+      type: object
       allOf:
         - $ref: '#/components/schemas/DecideResponse'
         - type: object
@@ -172,33 +178,80 @@ components:
               type: integer
               example: "1"
               
-    WorldInfo:
-      title: WorldInfo
-      type: object
-      properties:
-        locations:
-          type: array
-          items:
-            $ref: "#/components/schemas/Location"
-        fuel_cost:
-          type: number
-          format: long
-          example: 1.034
-      required:
-        - name
-        - fuel_cost
+    WorldMap:
+      description: |
+        The world map can be downloaded by a truck agent from https://raw.githubusercontent.com/trustbit/logistic-hackathon-public/main/data/map.json during a simulation run.
+        It is not required to download it, but a team might be able to get some useful  information from the map to optimize their truck agents decisions.
+        To make individual decide requests as fast as possible, it is better to download the map at the very beginning, when the agent starts up,
+        otherwise the simulation might decide that the truck is reacting too slow and exclude it from the current simulation run.
+      type: array
+      items:
+        $ref: "#/components/schemas/Location"
         
     Location:
-      title: Location
       type: object
       properties:
-        name:
+        city:
+          description: "The unique name of the location. This property will be used in roads and cargo offers to identify origin and destination locations"
           type: string
+          example: Vienna
+        country:
+          description: "The country of the location"
+          type: string
+          example: Austria
+        lat:
+          description: "The latitude of the GPS coordinate of the location"
+          type: number
+          format: long
+          example: 48.2083
+        lng:
+          description: "The longitude of the GPS coordinate of the location"
+          type: number
+          format: long
+          example: 16.3725
+        population:
+          description: "The current population at that location"
+          type: integer
+          minimum: 0
+          example: 1911191
         roads:
-          type: object
-          additionalProperties:
-            type: number
-            format: long
+          description: "List of all the roads & destinations a truck can travel to"
+          type: array
+          items:
+            $ref: "#/components/schemas/Road"
       required:
-        - name
+        - city
+        - country
+        - lat
+        - lng
+        - population
         - roads
+
+    Road:
+      type: object
+      properties:
+        dest:
+          description: "The `city` name of the destination location"
+          type: string
+          example: Bratislava
+        km:
+          description: "Distance to the destination from the current location"
+          type: number
+          format: long
+          example: 55
+        kmh:
+          description: |
+            Expected speed a truck can travel on that road in km/h. 
+            The same road can will have different expected travel speed, as each direction has e.g. different junctions, altitude profiles, ...
+          type: number
+          format: long
+          example: 83
+        major:
+          description: Major roads, like high ways, tend to have a higher traveling speed.
+          type: boolean
+          example: false
+      required:
+        - dest
+        - km
+        - kmh
+        - major
