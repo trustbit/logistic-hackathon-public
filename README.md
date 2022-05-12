@@ -137,6 +137,51 @@ CO2 emissions are counted as expences, based on the CO2 offset cost per kg.
 
 ### Cargo offers
 
+
+
+## Available Data
+
+We have a set of data available for the deeper analysis:
+
+- World map (fixed)
+- Simulation traces
+- Observability Dashboard
+
+### World Map
+
+You can [download](data/map.json) the world map. It describes the road graph as a collection of locations and roads that connect them. Estimated driving speed is also provided.
+
+### Simulation Traces
+
+Simulation traces could be downloaded from the [traces folder](https://traces.endpoints.trustbit-hackathon.cloud.goog). These are JSON files stored in [Chrome Tracing format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview).
+
+Note: Simulation traces that were published before the competition start - demonstrate the mechanics, but use a slightly different world. Keep that in mind, if you decide to analyse in advance.
+
+You can analyse the traces manually or load into the `chrome://tracing` tool. 
+
+Navigate to `chrome://tracing` in Chrome or Chromium browser, then drag-and-drop trace file into the tracing UI.
+
+There you can see a detailed breakdown of every single action that happened in the simulation, for all the participants and NPC agents.
+
+![image-20220512105849865](images/image-20220512105849865.png)
+
+You can zoom, filter and dig into the details. Events tend to have associated data:
+
+![image-20220512110108793](images/image-20220512110108793.png)
+
+
+
+#### Caveat - ms instead of hours
+
+Chrome tracing simulator isn't suitable for displaying large intervals like hours. So we "hack" and pass time and durations as milliseconds instead. When you see a millisecond unit, convert it mentally into hours.
+
+E.g.:
+
+- "Start 3,839.524 ms " means "Start at 3839.524 hours since the start of the simulation"
+- "Wall duration 2.034 ms" means "Wall duration of 2.034 hours" (roughly two hours and a minute)
+
+
+
 ## Agent template repositories and competition build system
 
 **We recommend to perform the steps of this section at the very beginning of the hackathon, just by using one of the supplied language templates without any changes. After the agent build is setup you can start to improve the truck agents behavior.**
