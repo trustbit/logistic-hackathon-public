@@ -299,3 +299,11 @@ Steps in detail:
 - As soon as your PR is merged, we will have your repository included in our build, which is scheduled to run **every 5 minutes** and which will provide new versions of your agent to the simulation. You can check on the status of your builds here: https://github.com/trustbit/logistic-hackathon-public/actions/workflows/docker-images.yml
 
 ## We are hiring
+We — a team of more than 30 people from over 10 nations — organise our daily work around trust and flexibility. You decide whether you want to work full-time or part-time. We are flexible and can adapt to your individual needs. We know that really good projects only happen if employees can concentrate on their personal strengths and deepen their interests. That’s why self-directed, continuous training is a central part of our daily work. To make this possible, we offer numerous opportunities to discover new things and learn from each other.
+
+What’s it like to work as a Software Engineer, Designer, Project Manager, Data Scientist or Consultant at Trustbit? That’s exactly what we asked some of our colleagues, [enjoy watching](https://trustbit.tech/careers)! 🍿
+
+<br/>
+<a href="https://trustbit.tech/careers">
+  <img src="images/trustbit.png" width="240"/>
+</a>
