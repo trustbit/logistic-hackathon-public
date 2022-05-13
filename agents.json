@@ -1,21 +1,21 @@
 [
     {
-      "unique_id": "team-champagne",
-      "is_fleet": true,
-      "github_repository": "tbolier/logistic-hackathon-agent",
-      "github_private_ssh_key_secret": "TEAM_CHAMPAGNE"
+        "unique_id": "team-champagne",
+        "is_fleet": true,
+        "github_repository": "tbolier/logistic-hackathon-agent",
+        "github_private_ssh_key_secret": "TEAM_CHAMPAGNE"
     },
     {
-      "unique_id": "fleet-opt",
-      "is_fleet": true,
-      "github_repository": "gcwioro/fleet_opt",
-      "github_private_ssh_key_secret": "TEAM_FLEET_OPT"
+        "unique_id": "fleet-opt",
+        "is_fleet": true,
+        "github_repository": "gcwioro/fleet_opt",
+        "github_private_ssh_key_secret": "TEAM_FLEET_OPT"
     },
-    {  
-      "unique_id": "team-bommp",
-      "is_fleet": true,
-      "github_repository": "oscarsommerer/team-bommp-trustbit-hackathon",
-      "github_private_ssh_key_secret": "TEAM_BOMMP"
+    {
+        "unique_id": "team-bommp",
+        "is_fleet": true,
+        "github_repository": "oscarsommerer/team-bommp-trustbit-hackathon",
+        "github_private_ssh_key_secret": "TEAM_BOMMP"
     },
     {
         "unique_id": "ail",
@@ -23,16 +23,22 @@
         "github_repository": "SyselMitY/hackathon-logistics-ailurus",
         "github_private_ssh_key_secret": "TEAM_AIL"
     },
-    {  
-      "unique_id": "data-lkw",
-      "is_fleet": true,
-      "github_repository": "florian-krempl/data_lkw",
-      "github_private_ssh_key_secret": "TEAM_DATA_LKW"
+    {
+        "unique_id": "data-lkw",
+        "is_fleet": true,
+        "github_repository": "florian-krempl/data_lkw",
+        "github_private_ssh_key_secret": "TEAM_DATA_LKW"
     },
     {
-      "unique_id": "team-dreiforce",
-      "is_fleet": true,
-      "github_repository": "fireplanet/trustbit-hackaton",
-      "github_private_ssh_key_secret": "TEAM_DREIFORCE"
+        "unique_id": "team-dreiforce",
+        "is_fleet": true,
+        "github_repository": "fireplanet/trustbit-hackaton",
+        "github_private_ssh_key_secret": "TEAM_DREIFORCE"
+    },
+    {
+        "unique_id": "team-vadim",
+        "is_fleet": false,
+        "github_repository": "vsavenkov/hackathon-part1-vadim",
+        "github_private_ssh_key_secret": "TEAM_VADIM"
     }
 ]
