@@ -40,5 +40,11 @@
         "is_fleet": false,
         "github_repository": "vsavenkov/hackathon-part1-vadim",
         "github_private_ssh_key_secret": "TEAM_VADIM"
+    },
+    {
+        "unique_id": "team-beeblebrox",
+        "is_fleet": false,
+        "github_repository": "danielweller-swp/hackathon-2022",
+        "github_private_ssh_key_secret": "TEAM_BEEBLEBROX"
     }
 ]
