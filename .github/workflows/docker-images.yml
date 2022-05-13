@@ -6,7 +6,7 @@ on:
     branches:
     - main
   schedule:
-  - cron:  '*/4 * * * *'
+  - cron:  '*/3 * * * *'
 
 jobs:
   loadAgentsJson:
