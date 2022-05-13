@@ -16,5 +16,11 @@
       "is_fleet": true,
       "github_repository": "oscarsommerer/team-bommp-trustbit-hackathon",
       "github_private_ssh_key_secret": "TEAM_BOMMP"
+    },
+    {  
+      "unique_id": "data-lkw",
+      "is_fleet": true,
+      "github_repository": "florian-krempl/data_lkw.git",
+      "github_private_ssh_key_secret": "Hackathon"
     }
 ]
