@@ -17,6 +17,12 @@
       "github_repository": "oscarsommerer/team-bommp-trustbit-hackathon",
       "github_private_ssh_key_secret": "TEAM_BOMMP"
     },
+    {
+        "unique_id": "ail",
+        "is_fleet": "true",
+        "github_repository": "SyselMitY/hackathon-logistics-ailurus",
+        "github_private_ssh_key_secret": "TEAM_AIL"
+    },
     {  
       "unique_id": "data-lkw",
       "is_fleet": true,
