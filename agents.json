@@ -46,5 +46,11 @@
         "is_fleet": false,
         "github_repository": "danielweller-swp/hackathon-2022",
         "github_private_ssh_key_secret": "TEAM_BEEBLEBROX"
+    },
+    {
+        "unique_id": "team-krasina15",
+        "is_fleet": false,
+        "github_repository": "krasina15/logistic-hackathon-agent-python",
+        "github_private_ssh_key_secret": "TEAM_KRASINA15"
     }
 ]
