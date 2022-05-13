@@ -10,5 +10,17 @@
       "is_fleet": true,
       "github_repository": "tbolier/logistic-hackathon-agent",
       "github_private_ssh_key_secret": "TEAM_CHAMPAGNE"
+    },
+    {
+      "unique_id": "fleet_opt",
+      "is_fleet": true,
+      "github_repository": "gcwioro/fleet_opt",
+      "github_private_ssh_key_secret": "TEAM_FLEET_OPT"
+    },
+    {  
+      "unique_id": "team-bommp",
+      "is_fleet": true,
+      "github_repository": "oscarsommerer/team-bommp-trustbit-hackathon",
+      "github_private_ssh_key_secret": "TEAM_BOMMP"
     }
 ]

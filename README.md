@@ -2,8 +2,7 @@
   <a href="https://www.bitmovin.com">
     <img alt="Trustbit Hackathon: Sustainable Logistics Simulation" src="images/header.jpeg" >
   </a>
-
-  <h4 align="center">This is the central repository for participants of the <br><a href="https://trustbit.tech/hackathon" target="_blank">Trustbit Hackathon: Sustainable Logistics Simulation</a> which explains how to participate in the competition and links to all relevant resources like agent templates. The build status of participants agents can be seen in the <a href="actions">GitHub Action history</a> of this repository.</h4>
+  <h4 align="center">This is the central repository for participants of the <br><a href="https://trustbit.tech/hackathon" target="_blank">Trustbit Hackathon: Sustainable Logistics Simulation</a> which explains how to participate in the competition and links to all relevant resources like agent templates. The build status of participants agents can be seen in the <a href="https://github.com/trustbit/logistic-hackathon-public/actions">GitHub Action history</a> of this repository.</h4>
 
   <p align="center">
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></img></a>
@@ -277,7 +276,7 @@ To get you started quickly, we created several template repositories for you. De
 
 ### 2. Add team members as collaborators to your private repository
 
-If you are participating in a team, just collect the GitHub handles of you team members and add them in the [Collaborators and teams](/settings/access) page of your repository's settings. That way all of them will be able to contribute code.
+If you are participating in a team, just collect the GitHub handles of you team members and add them in the Collaborators and teams page of your repository's settings. That way all of them will be able to contribute code.
 
 <img src="images/collaborators.jpeg" width="640"/>
 </br>
@@ -295,7 +294,7 @@ Steps in detail:
   - `hackathon.pub` - the public key
   - `hackathon` - the private key
 
-- Go to the [Deploy keys](settings/keys) page of your repository's settings and create a new deploy key `Hackathon` there and paste in the contents of your **public key file**.
+- Go to the _Deploy keys_ page of your repository's settings and create a new deploy key `Hackathon` there and paste in the contents of your **public key file**.
 
 <img src="images/deploy-key.jpeg" width="480"/>
 
