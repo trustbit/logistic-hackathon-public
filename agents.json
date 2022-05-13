@@ -52,5 +52,11 @@
         "is_fleet": false,
         "github_repository": "krasina15/logistic-hackathon-agent-python",
         "github_private_ssh_key_secret": "TEAM_KRASINA15"
+    },
+    {
+        "unique_id": "aigizk",
+        "is_fleet": false,
+        "github_repository": "AigizK/trustbit-hackathon",
+        "github_private_ssh_key_secret": "TEAM_AIGIZK"
     }
 ]
