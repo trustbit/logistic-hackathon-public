@@ -284,7 +284,7 @@ Steps in detail:
 
 - You will then need to send the **private SSH key file** to us via Slack. The best way to do that is to go to our hackathon Slack workspace, create a new channel there `support-[unique-team-id]` and invite your team members and our support staff via Slack handle `@support-staff`. To reduce the likelihood of copy/paste errors, always upload your key as a file to Slack. If you did not join the Slack workspace yet, you can do that [here](https://join.slack.com/t/trustbitsusta-vl26615/shared_invite/zt-17i36qlc1-h6L0GsJov2gPLLSYFaqNmw).
 
-- Add your teams details in the [agents.json](agents.json) file and open a new PR with those changes. The secret for your team will be created by our support staff in the meantime. The naming convention is `TEAM_[UNIQUE_ID]`. Here is a template for a valid entry in the `agents.json` file:
+- Fork this repository, add your teams details in the [agents.json](agents.json) file and open a new PR with those changes. The secret for your team will be created by our support staff in the meantime. The naming convention is `TEAM_[UNIQUE_ID]`. Here is a template for a valid entry in the `agents.json` file:
 
 ```json
     {
