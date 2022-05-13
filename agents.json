@@ -6,7 +6,7 @@
       "github_private_ssh_key_secret": "TEAM_CHAMPAGNE"
     },
     {
-      "unique_id": "fleet_opt",
+      "unique_id": "fleet-opt",
       "is_fleet": true,
       "github_repository": "gcwioro/fleet_opt",
       "github_private_ssh_key_secret": "TEAM_FLEET_OPT"
