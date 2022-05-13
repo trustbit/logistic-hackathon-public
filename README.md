@@ -147,9 +147,9 @@ Simulation runtime tracks cargos available for delivery. Whenever it is time for
   "name": "Fruits",          # kind
   "price": 1778.0,           # money you get for delivery
   "eta_to_cargo": 8.16,      # ETA from current loc to pickup loc
-  "km_to_cargo": 780.0,      # km to pickup location
-  "eta_to_deliver": 27.76,    # ETA for picking up and delivering
-  "km_to_deliver": 2730.0   # total kms to pick up AND deliver
+  "km_to_cargo": 780.0,      # kms to pickup location
+  "eta_to_deliver": 27.76,   # ETA for picking up and delivering
+  "km_to_deliver": 2730.0    # total kms to pick up AND deliver
 }
 ```
 
