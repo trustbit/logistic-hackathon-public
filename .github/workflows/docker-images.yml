@@ -26,6 +26,7 @@ jobs:
     needs: loadAgentsJson
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix: 
         agent: ${{fromJson(needs.loadAgentsJson.outputs.matrix)}}
     steps:
