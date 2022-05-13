@@ -21,6 +21,6 @@
       "unique_id": "data-lkw",
       "is_fleet": true,
       "github_repository": "florian-krempl/data_lkw.git",
-      "github_private_ssh_key_secret": "Hackathon"
+      "github_private_ssh_key_secret": "TEAM_LKW_DATA"
     }
 ]
