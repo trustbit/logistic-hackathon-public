@@ -50,6 +50,10 @@ Afterwards, we simulate the passing of time via [discrete-event simulation](http
 
 ### Your Workflow
 
+
+
+![image-20220513090946445](images/image-20220513090946445.png)
+
 1. You code an agent that controls truck(s) and submit it into the competition.
 2. That agents gets packaged as a docker container
 3. Regularly (every 5-10 minutes) we pull all agents in and start a new simulation run.
@@ -242,6 +246,19 @@ Each run takes 5-10 minutes, and you can see it as a separate peak on the charts
 - [General dashboard](https://telemetry.endpoints.trustbit-hackathon.cloud.goog)
 
 ![image-20220512110929530](images/image-20220512110929530.png) 
+
+## Competition Results
+
+We have 4 competition tracks:
+
+- Individual with efficiency rules
+- Team with efficiency rules
+- Individual with sustainability rules
+- Team with sustainability rules
+
+Winners are calculated by running the simulation 3 times (to reduce the role of luck) and picking the winner based on the average final balance across all 3 simulation runs.
+
+
 
 ## Agent template repositories and competition build system
 
