@@ -29,4 +29,10 @@
       "github_repository": "florian-krempl/data_lkw.git",
       "github_private_ssh_key_secret": "TEAM_DATA_LKW"
     }
+    {
+      "unique_id": "team-dreiforce",
+      "is_fleet": true,
+      "github_repository": "fireplanet/trustbit-hackaton",
+      "github_private_ssh_key_secret": "TEAM_DREIFORCE"
+    }
 ]
